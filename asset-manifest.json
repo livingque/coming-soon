@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/coming-soon/static/css/main.a64f56f8.css",
+    "main.js": "/coming-soon/static/js/main.e531f099.js",
+    "static/js/488.e12f16ac.chunk.js": "/coming-soon/static/js/488.e12f16ac.chunk.js",
+    "index.html": "/coming-soon/index.html",
+    "main.a64f56f8.css.map": "/coming-soon/static/css/main.a64f56f8.css.map",
+    "main.e531f099.js.map": "/coming-soon/static/js/main.e531f099.js.map",
+    "488.e12f16ac.chunk.js.map": "/coming-soon/static/js/488.e12f16ac.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a64f56f8.css",
+    "static/js/main.e531f099.js"
+  ]
+}
