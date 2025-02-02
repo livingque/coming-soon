@@ -2,42 +2,42 @@ import { useState, useEffect } from "react";
 
 const imageList = [
   {
-    url: "/p_project1.jpg",
+    url: "p_project1.jpg",
     type: "portrait",
     color: "#513e30",
   },
   {
-    url: "/p_project2.jpg",
+    url: "p_project2.jpg",
     type: "portrait",
     color: "#1f2c35",
   },
   {
-    url: "/p_project3.jpg",
+    url: "p_project3.jpg",
     type: "portrait",
     color: "#4c5343",
   },
   {
-    url: "/p_project4.jpg",
+    url: "p_project4.jpg",
     type: "portrait",
     color: "#563935",
   },
   {
-    url: "/l_project5.jpeg",
+    url: "l_project5.jpeg",
     type: "landscape",
     color: "#21394d",
   },
   {
-    url: "/l_project6.jpeg",
+    url: "l_project6.jpeg",
     type: "landscape",
     color: "#580d07",
   },
   {
-    url: "/l_project7.jpeg",
+    url: "l_project7.jpeg",
     type: "landscape",
     color: "#bf8c55",
   },
   {
-    url: "/l_project8.jpeg",
+    url: "l_project8.jpeg",
     type: "landscape",
     color: "#66636c",
   },
