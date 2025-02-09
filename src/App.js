@@ -1,125 +1,73 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
+import { AnimatePresence } from "motion/react";
+import * as motion from "motion/react-client";
+import bedIconIcon from "./bed_bedroom_icon.png";
+import bookcaseIcon from "./bookcase_cupboard_icon.png";
+import drawerIcon from "./chest_drawer_icon.png";
+import cupboardIcon from "./cupboard_icon.png";
+import sofaIcon from "./sofa_icon.png";
+import tableIcon from "./table_icon.png";
 
-const imageList = [
-  {
-    url: "p_project1.jpg",
-    type: "portrait",
-    color: "#513e30",
-  },
-  {
-    url: "p_project2.jpg",
-    type: "portrait",
-    color: "#1f2c35",
-  },
-  {
-    url: "p_project3.jpg",
-    type: "portrait",
-    color: "#4c5343",
-  },
-  {
-    url: "p_project4.jpg",
-    type: "portrait",
-    color: "#563935",
-  },
-  {
-    url: "l_project5.jpeg",
-    type: "landscape",
-    color: "#21394d",
-  },
-  {
-    url: "l_project6.jpeg",
-    type: "landscape",
-    color: "#580d07",
-  },
-  {
-    url: "l_project7.jpeg",
-    type: "landscape",
-    color: "#bf8c55",
-  },
-  {
-    url: "l_project8.jpeg",
-    type: "landscape",
-    color: "#66636c",
-  },
-];
-
-const getImageList = (orientation) => {
-  return imageList.filter((img) => img.type === orientation);
-};
-
-function App() {
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  const [screenOrientation, setScreenOrientation] = useState(
-    screenWidth <= 768 ? "portrait" : "landscape"
+const App = () => {
+  const [isVisible, setIsVisible] = useState(true);
+  const iconArray = useMemo(
+    () => [
+      bedIconIcon,
+      bookcaseIcon,
+      drawerIcon,
+      cupboardIcon,
+      sofaIcon,
+      tableIcon,
+    ],
+    []
   );
-  const [imgList, setImgList] = useState(getImageList(screenOrientation));
-  const [activeImage, setActiveImage] = useState(imgList[0]);
+  const [activeIcon, setActiveIcon] = useState(iconArray[0]);
 
   useEffect(() => {
-    const debounceFunction = (cb, delay) => {
-      let timer;
-      return () => {
-        clearTimeout(timer);
-        timer = setTimeout(() => cb(), delay);
-      };
+    const setAnimation = () => {
+      setActiveIcon(iconArray[Math.floor(Math.random() * iconArray.length)]);
+      setIsVisible(!isVisible);
     };
-
-    const calculateScreenResolution = () => {
-      setScreenWidth(window.innerWidth);
+    const tick = () => {
+      setTimeout(() => {
+        setAnimation();
+      }, 1000);
     };
-    const debouncedResizeHandler = debounceFunction(
-      calculateScreenResolution,
-      300
-    );
-
-    window.addEventListener("resize", debouncedResizeHandler);
-    return () => {
-      window.removeEventListener("resize", debouncedResizeHandler);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (screenWidth <= 768) {
-      setScreenOrientation("portrait");
-      setImgList(getImageList("portrait"));
-    } else {
-      setScreenOrientation("landscape");
-      setImgList(getImageList("landscape"));
-    }
-  }, [screenWidth]);
-
-  useEffect(() => {
-    setActiveImage(imgList[0]);
-  }, [imgList]);
-
-  useEffect(() => {
-    const tickImage = () => {
-      const activeIndex = imgList.findIndex(
-        (img) => img.url === activeImage.url
-      );
-      const nextIndex = (activeIndex + 1) % imgList.length;
-      setActiveImage(imgList[nextIndex]);
-    };
-    const interval = setInterval(tickImage, 3000);
-    return () => clearInterval(interval);
-  }, [imgList, activeImage]);
+    tick();
+  }, [isVisible, iconArray]);
 
   return (
-    <div
-      className="main-container"
-      style={{ backgroundImage: `url(${activeImage.url})` }}
-    >
-      <div className="center-block">
-        <div
-          className="overlay-div"
-          style={{ backgroundColor: activeImage.color }}
-        ></div>
-        <h2 className="logo-title">Livingque</h2>
-        <p className="website-text">website</p>
-        <h3 className="page-header">coming soon</h3>
+    <div className="container">
+      <h1>Livingque</h1>
+      <p className="sub-heading">Crafting Spaces, Enriching Lifestyles</p>
+      <div className="icon-container">
+        <AnimatePresence initial={false}>
+          {isVisible ? (
+            <motion.div
+              style={{ backgroundImage: `url(${activeIcon})` }}
+              initial={{
+                scale: 0,
+                rotate: 0,
+                visibility: "hidden",
+              }}
+              animate={{
+                scale: 1,
+                rotate: 360,
+                visibility: "visible",
+              }}
+              exit={{ scale: 0, rotate: 0, visibility: "hidden" }}
+              className="box"
+              key="box"
+            />
+          ) : null}
+        </AnimatePresence>
+      </div>
+      <div className="coming-soon-container">
+        <h6 className="website-text">website</h6>
+        <h2 className="neonText">coming soon</h2>
       </div>
     </div>
   );
-}
+};
 
 export default App;

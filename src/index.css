@@ -1,96 +1,100 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+body {
+    background-color: #202124;
+    font-family: Tahoma, sans-serif;
+    color: #eee;
 }
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Poppins", serif;
+h1 {
+    font-family: "Bree Serif", serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 48px;
+    margin: 0;
+    color: #fff649;
+    text-shadow: 1px 1px #333;
 }
-
-.main-container {
-  height: 100vh;
-  display: flex;
-  align-items: end;
-  justify-content: center;
-  background-repeat: no-repeat;
-
-  background-size:cover;
-  -webkit-animation: slidein 100s;
-  animation: slidein 100s;
-
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
-
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-
-  -webkit-animation-direction: alternate;
-  animation-direction: alternate;              
+.sub-heading {
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-top: 16px;
+    margin-bottom: 52px;
+    font-style: italic;
 }
-
-@-webkit-keyframes slidein {
-from {background-position: top; background-size:3000px; }
-to {background-position: -100px 0px;background-size:2750px;}
+@media screen and (min-width: 768px) {
+    h1 {
+        font-size: 52px;
+    }
+    .sub-heading {
+        font-size: 22px;
+    }
 }
-
-@keyframes slidein {
-from {background-position: top;background-size:3000px; }
-to {background-position: -100px 0px;background-size:2750px;}
-
-}
-
-.page-header {
-  font-size: 32px;
-  line-height: 78px;
-  color: #eee;
-  text-shadow: 1px 1px #333;
-}
-
-.logo-title {
-  font-size: 32px;
-  text-transform: uppercase;
-  letter-spacing: 15px; /* same will be padding-left to align the text in center */
-  padding-left: 15px;
-  font-family: "Antic Didone", serif;
-  text-shadow: 1px 1px #333;
-  color: #fff;
+h2 {
+    font-size: 42px;
+    line-height: 60px;
+    font-family: "Josefin Sans", serif;
 }
 .website-text {
-  font-size: 14px;
-  letter-spacing: 26px;
-  padding-left: 26px; /* same will be padding-left to align the text in center */
-  text-transform: uppercase;
-  margin: 20px 0 0 0;
-  text-shadow: 0.5px 0.5px #333;
-  color: #ddd;
+    font-size: 18px;
+    margin-top: 20px;
+    padding-left: 40px;
+    letter-spacing: 40px;
+    text-transform: uppercase;
+}
+.coming-soon-container {
+    margin-top: 50px;
+    text-align: center;
 }
 
-.center-block {
-  text-align: center;
-  width: 100%;
-  padding-top: 20px;
-  position: relative;
-  z-index: 0;
-}
-.overlay-div {
-  content: '';
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: red;
-  z-index: -1;
-  filter: opacity(0.7);
-}
-
-@media screen and (min-width: 768px) {
-  .main-container {
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
     align-items: center;
-  }
-  .center-block {
-    width: 400px;
-  }
+    justify-content: center;
+    position: relative;
+    height: 100vh;
 }
+.icon-container {
+    width: 130px;
+    height: 130px;
+}
+
+.box {
+    width: 130px;
+    height: 130px;
+    /* background-color: #fff649; */
+    border-radius: 10px;
+}
+
+/* flickering text */
+.neonText {
+    animation: flicker 1.5s infinite alternate;
+    color: #eee;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px #333;
+  }
+  
+  /* Flickering animation */
+  @keyframes flicker {
+      
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+  
+        text-shadow:
+        0 0 4px #fff,
+        0 0 11px #fff,
+        0 0 19px #fff,
+        0 0 40px #fff649,
+        0 0 80px #fff649,
+        0 0 90px #fff649,
+        0 0 100px #fff649,
+        0 0 150px #fff649;
+    
+    }
+    
+    20%, 24%, 55% {        
+        text-shadow: none;
+    }    
+  }
+  
